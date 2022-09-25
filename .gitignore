@@ -1,0 +1,6 @@
+**/builds/
+.vscode/
+*.exe
+*.out
+*.db
+config.json
