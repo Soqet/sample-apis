@@ -6,7 +6,7 @@ else
     ending := out
 endif
 
-cmdpath = $(mod)/cmd
+cmdpath = ./cmd
 files = $(cmdpath)/main.go
 
 
@@ -14,7 +14,7 @@ run:
 	go run $(files)
 
 build:
-	go build -o ./builds/$(mod)/main.$(ending) $(files)
+	go build -o ./builds/main.$(ending) $(files)
 
 fmt: 
-	go fmt $(cmdpath) $(mod)/internal/db $(mod)/internal/api
+	go fmt $(cmdpath) ./internal/db ./internal/api

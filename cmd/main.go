@@ -23,7 +23,6 @@ func main() {
 		panic(err)
 	}
 	router := mux.NewRouter()
-	// s := router.Host(config.ApiUrl).Subrouter()
 	api.Init(router, db)
 	http.Handle("/", router)
 	fmt.Println("Server is listening")
