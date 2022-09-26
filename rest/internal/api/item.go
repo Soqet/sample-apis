@@ -7,7 +7,7 @@ import (
 func (item ItemImport) isCorrect() bool {
 	if item.Id == item.ParentId {
 		return false
-	} 
+	}
 	if item.Size <= 0 {
 		return false
 	}

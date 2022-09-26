@@ -7,7 +7,6 @@ import (
 	"net/http"
 	"rest/internal/api"
 	database "rest/internal/db"
-
 )
 
 type Config struct {

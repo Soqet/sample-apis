@@ -6,4 +6,3 @@ type Item struct {
 	ParentId string
 	Size     uint
 }
-

@@ -1,15 +1,13 @@
 package api
 
 import (
-	"net/http"
-	database "rest/internal/db"
 	"github.com/gorilla/mux"
 	jsoniter "github.com/json-iterator/go"
+	"net/http"
+	database "rest/internal/db"
 )
 
 var json = jsoniter.ConfigCompatibleWithStandardLibrary
-
-
 
 func handleImports(db *database.DB) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {

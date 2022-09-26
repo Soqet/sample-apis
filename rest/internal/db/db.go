@@ -53,7 +53,7 @@ func (db *DB) GetItem(id string) (Item, error) {
 		}
 		return item, nil
 	}
-	return Item{}, &DbError{ message: "404" }
+	return Item{}, &DbError{message: "404"}
 }
 
 func (db *DB) GetChildren(parentId string) ([]Item, error) {
