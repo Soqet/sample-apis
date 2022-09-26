@@ -9,26 +9,7 @@ import (
 
 var json = jsoniter.ConfigCompatibleWithStandardLibrary
 
-func (item *Item) castDb(dbNode database.Item) {
-	item.Id = dbNode.Id
-	item.Info = dbNode.Info
-	item.ParentId = dbNode.ParentId
-	item.Size = dbNode.Size
-}
 
-func getAllChildren(db *database.DB, node *Item) error {
-	children, err := db.GetChildren(node.Id)
-	if err != nil {
-		return err
-	}
-	for i, e := range children {
-		var item Item
-		item.castDb(e)
-		node.Children = append(node.Children, item)
-		getAllChildren(db, &node.Children[i])
-	}
-	return nil
-}
 
 func handleImports(db *database.DB) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -91,7 +72,7 @@ func handleNodes(db *database.DB) func(w http.ResponseWriter, r *http.Request) {
 		}
 		var item Item
 		item.castDb(dbNode)
-		getAllChildren(db, &item)
+		item.getAllChildren(db)
 		bytes, err := json.Marshal(item)
 		if err != nil {
 			w.WriteHeader(http.StatusBadRequest)
